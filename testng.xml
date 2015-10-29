@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Custom suite" parallel="false">
+  <test name="Templatemonster" >
+    <classes>
+      <class name="Task1"/>
+      <class name="Task2"/>
+      <class name="Task3"/>
+      <class name="Task4"/>
+      <class name="Task5"/>
+    </classes>
+  </test>
+</suite>
