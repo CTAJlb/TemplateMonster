@@ -18,6 +18,6 @@ public class Task9 extends BaseTestSettings {
         searchControls.stepSearch("#52112");
         searchControls.checkSearchResult("52112");
         searchControls.getPicturesPreview();
-
+        System.out.println("Task9 passed");
     }
 }
