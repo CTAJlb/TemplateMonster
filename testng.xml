@@ -8,6 +8,9 @@
       <class name="Task3"/>
       <class name="Task4"/>
       <class name="Task5"/>
+      <class name="Task8"/>
+      <class name="Task9"/>
+      <class name="Task10"/>
     </classes>
   </test>
 </suite>

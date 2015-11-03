@@ -9,6 +9,8 @@ import org.testng.Assert;
 import ui_Layer.CheckOutPage;
 import ui_Layer.PageFactorySettings;
 
+import static core.Utils.clickJS;
+
 /**
  * Created by Libe on 28.10.2015.
  */
@@ -30,7 +32,7 @@ public class CartForm extends PageFactorySettings {
         wait.until(ExpectedConditions.elementToBeClickable(checkOutBtn));
 //        System.out.println(successAddToCartMsg.getText());
         Assert.assertEquals(getSuccessAddToCartMsg(), expMsg, "Massage was not as expected");
-        checkOutBtn.click();
+        clickJS(checkOutBtn);
         return new CheckOutPage();
     }
 

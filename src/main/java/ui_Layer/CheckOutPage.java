@@ -2,10 +2,13 @@ package ui_Layer;
 
 import core.Driver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import static core.Utils.setTextJS;
 
 /**
  * Created by Libe on 28.10.2015.
@@ -25,6 +28,9 @@ public class CheckOutPage extends PageFactorySettings {
 
     @FindBy(css = "#checkout-signin-form-email")
     private WebElement emailField;
+
+    @FindBy(css = ".popover-content")
+    private WebElement emailErrorMsg;
 
     @FindBy(css = "#checkout-signin-form-password")
     private WebElement passwordField;
@@ -106,7 +112,8 @@ public class CheckOutPage extends PageFactorySettings {
     private WebElement blockHeading;
 
 
-    private WebDriverWait wait = new WebDriverWait(Driver.get(), 35);
+    public WebDriverWait wait = new WebDriverWait(Driver.get(), 35);
+    private Actions builder = new Actions(Driver.get());
 
     public void stepBillingCustomerRegistration(String name, String email, String address, String city, String postCode, String phoneNum ) {
         newCustomerRadioBtn.click();
@@ -136,7 +143,15 @@ public class CheckOutPage extends PageFactorySettings {
         emailField.sendKeys(email);
         passwordField.sendKeys(password);
         signInBtn.click();
+    }
 
+    public void checkEmailValidation(String emailValue, String expErrormsg) {
+        returningCustomerRadioBtn.click();
+        emailField.clear();
+        setTextJS(emailField, emailValue);
+        builder.moveToElement(passwordField);
+        wait.until(ExpectedConditions.visibilityOf(emailErrorMsg));
+        Assert.assertTrue(emailErrorMsg.getText().contains(expErrormsg));
     }
 
 
@@ -175,5 +190,6 @@ public class CheckOutPage extends PageFactorySettings {
         }
         return new CashPage();
     }
+
 
 }

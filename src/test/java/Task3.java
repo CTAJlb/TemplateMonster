@@ -20,7 +20,7 @@ public class Task3 extends BaseTestSettings {
     //PreConditions get random email
     Random r = new Random();
     long random = r.nextInt();
-    String email = "test" + random + "@gmail.com";
+    String email = "test" + random + "@mailinator.com";
 
     @Test(dataProvider = "Task3", dataProviderClass = TestDataProvider.class)
     public void checkBuyTemplatePayPal(String searchValue, String expTemplateNumber, String expMsg,  String name, String address, String city, String postCode, String phoneNum, String paySystem, String expURL) {
